@@ -1,0 +1,1002 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PULZ Fitness — Fitness studio, který tě posune dál</title>
+<meta name="description" content="PULZ Fitness — osobní trénink, skupinové lekce a výživové poradenství. Trenérka Kristina a tým, kteří tě dovedou k cíli.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:        #0B0610;
+  --bg-alt:    #140A1E;
+  --card:      #1C0F29;
+  --card-2:    #240F31;
+  --ink:       #F4ECF6;
+  --ink-soft:  #C3AFC9;
+  --white:     #FFFFFF;
+  --accent:    #FF2E9A;
+  --accent-dark: #D6117C;
+  --violet:    #8A3CF7;
+  --line:      rgba(255, 46, 154, 0.22);
+  --glow:      rgba(255, 46, 154, 0.55);
+  --glow-violet: rgba(138, 60, 247, 0.5);
+
+  --font-display: "Anton", "Arial Narrow", sans-serif;
+  --font-body: "Work Sans", "Segoe UI", sans-serif;
+
+  --wrap: 1180px;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+ul { list-style: none; margin: 0; padding: 0; }
+
+.wrap {
+  max-width: var(--wrap);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+.top-strip {
+  height: 3px;
+  width: 100%;
+  background: linear-gradient(90deg, var(--accent), var(--violet), var(--accent), var(--violet));
+  background-size: 300% 100%;
+  animation: stripFlow 6s linear infinite;
+}
+@keyframes stripFlow {
+  0% { background-position: 0% 0%; }
+  100% { background-position: 300% 0%; }
+}
+
+.eyebrow-line {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.85rem;
+  color: var(--accent);
+  margin: 0 0 10px;
+  padding-left: 14px;
+  border-left: 3px solid var(--accent);
+  display: inline-block;
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(1.9rem, 3.4vw, 2.7rem);
+  line-height: 1.08;
+  letter-spacing: 0.2px;
+  margin: 0 0 24px;
+  max-width: 20ch;
+  color: var(--ink);
+}
+
+.text-accent {
+  color: var(--accent);
+  animation: neonIntro 2.6s ease-out 1;
+}
+@keyframes neonIntro {
+  0%   { opacity: 0.2; text-shadow: none; }
+  8%   { opacity: 1;   text-shadow: 0 0 6px var(--glow), 0 0 22px var(--glow), 0 0 44px var(--accent); }
+  12%  { opacity: 0.35; text-shadow: none; }
+  16%  { opacity: 1;   text-shadow: 0 0 6px var(--glow), 0 0 22px var(--glow), 0 0 44px var(--accent); }
+  20%  { opacity: 0.4; text-shadow: none; }
+  24%  { opacity: 1;   text-shadow: 0 0 6px var(--glow), 0 0 22px var(--glow), 0 0 44px var(--accent); }
+  100% { opacity: 1;   text-shadow: 0 0 6px var(--glow), 0 0 22px var(--glow), 0 0 44px var(--accent); }
+}
+
+.btn {
+  display: inline-block;
+  padding: 14px 30px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: background-color 160ms ease, color 160ms ease, border-color 160ms ease, box-shadow 220ms ease, transform 160ms ease;
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: var(--white);
+  box-shadow: 0 0 0 rgba(255, 46, 154, 0);
+  animation: btnPulse 2.6s ease-in-out infinite;
+}
+.btn-primary:hover {
+  background: var(--accent-dark);
+  transform: translateY(-2px);
+}
+@keyframes btnPulse {
+  0%, 100% { box-shadow: 0 0 0 rgba(255, 46, 154, 0.0), 0 0 14px rgba(255, 46, 154, 0.25); }
+  50% { box-shadow: 0 0 0 rgba(255, 46, 154, 0.0), 0 0 28px rgba(255, 46, 154, 0.6); }
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--ink);
+  border-color: var(--ink-soft);
+}
+.btn-ghost:hover { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(11, 6, 16, 0.85);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--line);
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  height: 76px;
+}
+
+.logo {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  letter-spacing: 1px;
+  color: var(--ink);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.logo-dot {
+  color: var(--accent);
+  text-shadow: 0 0 6px var(--glow), 0 0 16px var(--glow);
+}
+
+.pulse-dot {
+  display: inline-block;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 6px var(--glow), 0 0 14px var(--glow);
+  animation: pulseBlink 1.6s ease-in-out infinite;
+  flex-shrink: 0;
+}
+@keyframes pulseBlink {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.35; transform: scale(0.72); }
+}
+
+.nav {
+  display: flex;
+  gap: 26px;
+  margin-left: auto;
+}
+.nav a {
+  font-weight: 500;
+  font-size: 0.95rem;
+  padding: 6px 2px;
+  border-bottom: 2px solid transparent;
+  transition: border-color 160ms ease, color 160ms ease;
+  color: var(--ink-soft);
+}
+.nav a:hover { border-color: var(--accent); color: var(--ink); }
+
+.header-cta { margin-left: 8px; padding: 11px 22px; }
+
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 34px;
+  height: 34px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  margin-left: auto;
+}
+.nav-toggle span {
+  height: 2px;
+  background: var(--ink);
+  width: 100%;
+  transition: transform 160ms ease, opacity 160ms ease;
+}
+.nav-toggle.is-open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-toggle.is-open span:nth-child(2) { opacity: 0; }
+.nav-toggle.is-open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+.hero { padding-top: 64px; overflow: hidden; position: relative; }
+
+.hero-inner {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 48px;
+  align-items: center;
+  padding-bottom: 64px;
+}
+
+.hero-title {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(3rem, 7vw, 5.4rem);
+  line-height: 0.94;
+  margin: 8px 0 22px;
+  color: var(--ink);
+}
+
+.hero-lead {
+  max-width: 46ch;
+  color: var(--ink-soft);
+  font-size: 1.05rem;
+  margin-bottom: 30px;
+}
+
+.hero-actions { display: flex; gap: 16px; flex-wrap: wrap; }
+
+.hero-media { position: relative; }
+
+.hero-photo {
+  aspect-ratio: 4 / 5;
+  width: 100%;
+  position: relative;
+  border: 1px solid var(--line);
+}
+
+.hero-media::before {
+  content: "";
+  position: absolute;
+  inset: -18px;
+  z-index: -1;
+  background: radial-gradient(circle at 30% 20%, var(--glow-violet), transparent 60%),
+              radial-gradient(circle at 80% 80%, var(--glow), transparent 55%);
+  filter: blur(10px);
+  animation: auraPulse 4.5s ease-in-out infinite;
+}
+@keyframes auraPulse {
+  0%, 100% { opacity: 0.55; transform: scale(1); }
+  50% { opacity: 0.95; transform: scale(1.04); }
+}
+
+.hero-badge {
+  position: absolute;
+  bottom: -22px;
+  left: -22px;
+  background: var(--card);
+  border: 1px solid var(--line);
+  color: var(--white);
+  padding: 18px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-width: 120px;
+  box-shadow: 0 0 24px rgba(255, 46, 154, 0.25);
+}
+.hero-badge-num {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  color: var(--accent);
+  line-height: 1;
+  text-shadow: 0 0 10px var(--glow);
+}
+.hero-badge-label {
+  font-size: 0.75rem;
+  margin-top: 6px;
+  color: var(--ink-soft);
+  line-height: 1.3;
+}
+
+.stats-bar {
+  background: var(--bg-alt);
+  color: var(--white);
+  padding: 34px 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  text-align: center;
+}
+.stat { display: flex; flex-direction: column; gap: 6px; }
+.stat-num {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 3vw, 2.4rem);
+  color: var(--accent);
+  text-shadow: 0 0 12px var(--glow);
+}
+.stat-label {
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+}
+
+.hero-photo,
+.about-media,
+.gallery-item,
+.trainer-photo,
+.team-photo {
+  overflow: hidden;
+  position: relative;
+}
+.hero-photo img,
+.about-media img,
+.gallery-item img,
+.trainer-photo img,
+.team-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 420ms ease, filter 420ms ease;
+  filter: saturate(1.05) contrast(1.02);
+}
+.gallery-item:hover img,
+.trainer-photo:hover img,
+.team-photo:hover img,
+.about-media:hover img {
+  transform: scale(1.06);
+}
+
+.img-placeholder {
+  background:
+    repeating-linear-gradient(135deg, rgba(255,46,154,0.06) 0 14px, rgba(255,46,154,0) 14px 28px),
+    var(--card);
+  border: 1px solid var(--line);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: var(--ink-soft);
+  font-size: 0.85rem;
+  padding: 16px;
+  min-height: 160px;
+}
+
+.section { padding: 88px 0; }
+.section-alt { background: var(--bg-alt); }
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 56px;
+  align-items: center;
+}
+.about-media { aspect-ratio: 1 / 1; border: 1px solid var(--line); }
+.check-list { margin-top: 22px; display: flex; flex-direction: column; gap: 12px; }
+.check-list li {
+  padding-left: 26px;
+  position: relative;
+  color: var(--ink-soft);
+}
+.check-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 9px;
+  width: 12px;
+  height: 12px;
+  background: var(--accent);
+  box-shadow: 0 0 8px var(--glow);
+}
+
+.trainer-spotlight {
+  display: grid;
+  grid-template-columns: 0.7fr 1.3fr;
+  gap: 48px;
+  align-items: center;
+  margin-top: 12px;
+  padding: 40px;
+  background: var(--card);
+  border: 1px solid var(--line);
+  box-shadow: 0 0 40px rgba(138, 60, 247, 0.12);
+}
+.trainer-photo { aspect-ratio: 3 / 4; border: 1px solid var(--line); }
+.trainer-name {
+  font-family: var(--font-display);
+  font-size: 2.2rem;
+  margin: 0 0 4px;
+  color: var(--ink);
+}
+.trainer-role {
+  color: var(--accent);
+  font-weight: 600;
+  margin: 0 0 16px;
+}
+.trainer-bio { color: var(--ink-soft); max-width: 62ch; }
+.trainer-tags { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px; }
+.tag {
+  border: 1px solid var(--violet);
+  color: var(--ink);
+  padding: 6px 14px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.team-grid {
+  margin-top: 32px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+.team-card { text-align: left; }
+.team-photo { aspect-ratio: 4 / 5; margin-bottom: 14px; border: 1px solid var(--line); }
+.team-card h4 { margin: 0 0 4px; font-size: 1.1rem; color: var(--ink); }
+.team-card p { margin: 0; color: var(--ink-soft); font-size: 0.9rem; }
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+  background: var(--line);
+  border: 1px solid var(--line);
+}
+.service-card {
+  background: var(--bg);
+  padding: 34px 28px;
+  transition: background-color 200ms ease, box-shadow 200ms ease;
+}
+.service-card:hover {
+  background: var(--card);
+  box-shadow: inset 0 0 30px rgba(255, 46, 154, 0.12);
+}
+.service-card h3 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 1.3rem;
+  margin: 0 0 12px;
+  color: var(--ink);
+}
+.service-card p { color: var(--ink-soft); margin: 0; font-size: 0.95rem; }
+
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  align-items: stretch;
+}
+.price-card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  padding: 36px 30px;
+  display: flex;
+  flex-direction: column;
+}
+.price-card h3 { font-family: var(--font-display); font-weight: 400; font-size: 1.4rem; margin: 0 0 8px; color: var(--ink); }
+.price-card .price { font-size: 1.1rem; color: var(--ink-soft); margin: 0 0 22px; }
+.price-card .price span { font-family: var(--font-display); font-size: 2rem; color: var(--ink); }
+.price-card ul { margin-bottom: 28px; display: flex; flex-direction: column; gap: 10px; }
+.price-card li { padding-left: 20px; position: relative; font-size: 0.92rem; color: var(--ink-soft); }
+.price-card li::before { content: "—"; position: absolute; left: 0; color: var(--accent); }
+.price-card .btn { margin-top: auto; text-align: center; }
+
+.price-card-highlight {
+  background: linear-gradient(180deg, var(--card-2), var(--card));
+  border-color: var(--accent);
+  box-shadow: 0 0 40px rgba(255, 46, 154, 0.25);
+  transform: translateY(-10px);
+}
+.price-tag {
+  color: var(--accent) !important;
+  font-weight: 700;
+  font-size: 0.78rem !important;
+  text-transform: none;
+  margin-bottom: 10px !important;
+  text-shadow: 0 0 8px var(--glow);
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: 220px;
+  gap: 16px;
+}
+.gallery-item { border: 1px solid var(--line); }
+.gallery-item:nth-child(1) { grid-column: span 2; grid-row: span 2; }
+.gallery-item:nth-child(4) { grid-row: span 2; }
+
+.reviews-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.review-card {
+  background: var(--card);
+  border-left: 3px solid var(--accent);
+  padding: 28px 26px;
+  margin: 0;
+  box-shadow: -12px 0 30px -20px var(--glow);
+}
+.review-card p { margin: 0 0 16px; font-size: 1rem; color: var(--ink); }
+.review-card cite {
+  font-style: normal;
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+  font-weight: 600;
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 56px;
+}
+.contact-lead { color: var(--ink-soft); max-width: 44ch; }
+.contact-list { display: flex; flex-direction: column; gap: 12px; margin: 26px 0; color: var(--ink); }
+.contact-list a:hover { color: var(--accent); }
+.social-links { display: flex; gap: 18px; }
+.social-links a { font-weight: 600; border-bottom: 2px solid var(--accent); padding-bottom: 2px; }
+
+.contact-form {
+  background: var(--card);
+  border: 1px solid var(--line);
+  padding: 36px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.contact-form label { font-size: 0.85rem; font-weight: 600; margin-top: 12px; color: var(--ink); }
+.contact-form input,
+.contact-form textarea {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  padding: 12px 14px;
+  border: 1px solid var(--line);
+  background: var(--bg);
+  color: var(--ink);
+  resize: vertical;
+}
+.contact-form input:focus,
+.contact-form textarea:focus {
+  border-color: var(--accent);
+}
+.form-submit { margin-top: 18px; }
+.form-note { font-size: 0.85rem; color: var(--accent); min-height: 1.2em; margin: 10px 0 0; }
+
+.site-footer {
+  background: var(--bg-alt);
+  color: var(--ink-soft);
+  padding: 40px 0;
+  border-top: 1px solid var(--line);
+}
+.footer-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+.logo-footer { color: var(--white); }
+.footer-links { display: flex; gap: 20px; }
+.footer-links a:hover { color: var(--white); }
+
+@media (max-width: 900px) {
+  .nav, .header-cta { display: none; }
+  .nav-toggle { display: flex; }
+
+  .site-header.is-open .nav {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 76px;
+    left: 0;
+    right: 0;
+    background: var(--bg);
+    padding: 20px 24px 28px;
+    border-bottom: 1px solid var(--line);
+    gap: 16px;
+  }
+  .site-header.is-open .header-cta {
+    display: inline-block;
+    margin: 0 24px 24px;
+  }
+
+  .hero-inner { grid-template-columns: 1fr; }
+  .hero-media { order: -1; max-width: 360px; margin: 0 auto; }
+  .stats-grid { grid-template-columns: repeat(2, 1fr); }
+
+  .about-grid { grid-template-columns: 1fr; }
+  .trainer-spotlight { grid-template-columns: 1fr; padding: 24px; }
+  .team-grid { grid-template-columns: 1fr; max-width: 320px; margin-inline: auto; }
+
+  .services-grid { grid-template-columns: 1fr; }
+  .pricing-grid { grid-template-columns: 1fr; }
+  .price-card-highlight { transform: none; }
+  .reviews-grid { grid-template-columns: 1fr; }
+
+  .gallery-grid { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 160px; }
+  .gallery-item:nth-child(1) { grid-column: span 2; grid-row: span 1; }
+  .gallery-item:nth-child(4) { grid-row: span 1; }
+
+  .contact-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+<div class="top-strip"></div>
+
+<header class="site-header" id="header">
+  <div class="wrap header-inner">
+    <a href="#uvod" class="logo"><span class="pulse-dot"></span>PULZ<span class="logo-dot">.</span></a>
+
+    <nav class="nav" id="nav">
+      <a href="#o-nas">O nás</a>
+      <a href="#trenerka">Trenéři</a>
+      <a href="#sluzby">Služby</a>
+      <a href="#cenik">Ceník</a>
+      <a href="#galerie">Galerie</a>
+      <a href="#kontakt">Kontakt</a>
+    </nav>
+
+    <a href="#kontakt" class="btn btn-primary header-cta">Vyzkoušet zdarma</a>
+
+    <button class="nav-toggle" id="navToggle" aria-label="Otevřít menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<section class="hero" id="uvod">
+  <div class="wrap hero-inner">
+    <div class="hero-text">
+      <p class="eyebrow-line">Fitness studio Praha</p>
+      <h1 class="hero-title">Najdi<br>svůj<br><span class="text-accent">PULZ.</span></h1>
+      <p class="hero-lead">Osobní trénink, skupinové lekce a výživové poradenství na jednom místě. Bez frází o zázracích — jen poctivá práce, správný plán a lidi, kterým na tobě záleží.</p>
+      <div class="hero-actions">
+        <a href="#kontakt" class="btn btn-primary">Domluvit první trénink</a>
+        <a href="#sluzby" class="btn btn-ghost">Co u nás najdeš</a>
+      </div>
+    </div>
+
+    <div class="hero-media">
+      <div class="hero-photo">
+        <img src="images/hero.jpg" alt="Interiér posilovny PULZ Fitness">
+      </div>
+      <div class="hero-badge">
+        <span class="hero-badge-num">4.9</span>
+        <span class="hero-badge-label">hodnocení<br>od klientů</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="stats-bar">
+    <div class="wrap stats-grid">
+      <div class="stat">
+        <span class="stat-num" data-count="8">0</span>
+        <span class="stat-label">let na trhu</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num" data-count="450">0</span>
+        <span class="stat-label">aktivních členů</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num" data-count="12">0</span>
+        <span class="stat-label">lekcí týdně</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num" data-count="97">0</span>
+        <span class="stat-label">% doporučí dál</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="o-nas">
+  <div class="wrap about-grid">
+    <div class="about-media">
+      <img src="images/o-nas.jpg" alt="Odpočinková zóna studia PULZ Fitness">
+    </div>
+    <div class="about-text">
+      <p class="eyebrow-line">O nás</p>
+      <h2 class="section-title">Studio, kam chodíš rád —<br>ne kam se nutíš</h2>
+      <p>PULZ Fitness vzniklo z jednoduché myšlenky: trénink má dávat smysl a bavit. Nejsme velká anonymní hala plná strojů, kterým nikdo nerozumí. Jsme tým lidí, kteří si na tebe udělají čas, sestaví plán na míru a jdou s tebou celou cestu — od první schůzky až po výsledek, který cítíš i vidíš.</p>
+      <ul class="check-list">
+        <li>Individuální přístup ke každému klientovi</li>
+        <li>Malé skupiny na lekcích, ne přeplněné haly</li>
+        <li>Moderní vybavení a čisté zázemí</li>
+        <li>Výživové poradenství jako součást programu</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt" id="trenerka">
+  <div class="wrap">
+    <p class="eyebrow-line">Trenéři</p>
+    <h2 class="section-title">Lidé, kteří tě povedou</h2>
+
+    <div class="trainer-spotlight">
+      <div class="trainer-photo img-placeholder" data-photo-slot="kristina.jpg">
+        <span>Fotka: Kristina</span>
+      </div>
+      <div class="trainer-info">
+        <h3 class="trainer-name">Kristina</h3>
+        <p class="trainer-role">Hlavní trenérka &amp; výživová poradkyně</p>
+        <p class="trainer-bio">Kristina se fitness věnuje přes deset let a za tu dobu prošla stovkami klientů — od úplných začátečníků po závodní sportovce. Věří, že nejlepší tréninkový plán je ten, který dokážeš dodržet i po náročném dni v práci. Specializuje se na silový trénink, úpravu techniky a sestavování jídelníčků, které fungují v reálném životě, ne jen na papíře.</p>
+        <div class="trainer-tags">
+          <span class="tag">Silový trénink</span>
+          <span class="tag">Korekce techniky</span>
+          <span class="tag">Výživové poradenství</span>
+          <span class="tag">Příprava na závody</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="team-grid">
+      <div class="team-card">
+        <div class="team-photo img-placeholder" data-photo-slot="trener-2.jpg">
+          <span>Fotka: trenér</span>
+        </div>
+        <h4>Jméno trenéra</h4>
+        <p>Skupinové lekce &amp; kondiční trénink</p>
+      </div>
+      <div class="team-card">
+        <div class="team-photo img-placeholder" data-photo-slot="trener-3.jpg">
+          <span>Fotka: trenér</span>
+        </div>
+        <h4>Jméno trenérky</h4>
+        <p>Jóga &amp; regenerace</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="sluzby">
+  <div class="wrap">
+    <p class="eyebrow-line">Služby</p>
+    <h2 class="section-title">Co u nás najdeš</h2>
+
+    <div class="services-grid">
+      <div class="service-card">
+        <h3>Osobní trénink</h3>
+        <p>Plán šitý na míru tvým cílům, možnostem a časovým dispozicím. Jeden na jednoho, s plnou pozorností trenéra.</p>
+      </div>
+      <div class="service-card">
+        <h3>Skupinové lekce</h3>
+        <p>Silový trénink, kruhový trénink i mobilita v malých skupinách. Motivace parťáků, individuální korekce.</p>
+      </div>
+      <div class="service-card">
+        <h3>Výživové poradenství</h3>
+        <p>Jídelníček postavený na tvém životním stylu, ne na univerzální šabloně. Bez zákazů, s dlouhodobým výsledkem.</p>
+      </div>
+      <div class="service-card">
+        <h3>Funkční trénink</h3>
+        <p>Síla a pohyblivost pro běžný život — méně bolavá záda, více energie na to, co tě baví.</p>
+      </div>
+      <div class="service-card">
+        <h3>Příprava na závody</h3>
+        <p>Specializovaný plán pro powerlifting, kulturistiku i vytrvalostní sporty, včetně ladění formy na termín.</p>
+      </div>
+      <div class="service-card">
+        <h3>Vstupní konzultace</h3>
+        <p>Zhodnocení tvé kondice, cílů a zdravotního stavu — základ, na kterém stavíme celý tréninkový plán.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt" id="cenik">
+  <div class="wrap">
+    <p class="eyebrow-line">Ceník</p>
+    <h2 class="section-title">Vyber si tempo, které ti sedí</h2>
+
+    <div class="pricing-grid">
+      <div class="price-card">
+        <h3>Základ</h3>
+        <p class="price"><span>690</span> Kč / měsíc</p>
+        <ul>
+          <li>Volný vstup do posilovny</li>
+          <li>Přístup na skupinové lekce</li>
+          <li>Vstupní konzultace</li>
+        </ul>
+        <a href="#kontakt" class="btn btn-ghost">Vybrat plán</a>
+      </div>
+
+      <div class="price-card price-card-highlight">
+        <p class="price-tag">Nejoblíbenější</p>
+        <h3>Standard</h3>
+        <p class="price"><span>1 190</span> Kč / měsíc</p>
+        <ul>
+          <li>Vše ze Základu</li>
+          <li>2× osobní trénink měsíčně</li>
+          <li>Základní výživový plán</li>
+        </ul>
+        <a href="#kontakt" class="btn btn-primary">Vybrat plán</a>
+      </div>
+
+      <div class="price-card">
+        <h3>Premium</h3>
+        <p class="price"><span>1 990</span> Kč / měsíc</p>
+        <ul>
+          <li>Vše ze Standardu</li>
+          <li>Neomezené osobní tréninky</li>
+          <li>Individuální výživové poradenství</li>
+        </ul>
+        <a href="#kontakt" class="btn btn-ghost">Vybrat plán</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="galerie">
+  <div class="wrap">
+    <p class="eyebrow-line">Galerie</p>
+    <h2 class="section-title">Jak to u nás vypadá</h2>
+
+    <div class="gallery-grid">
+      <div class="gallery-item"><img src="images/galerie-1.jpg" alt="Šatna PULZ Fitness s neonovým nápisem"></div>
+      <div class="gallery-item"><img src="images/galerie-2.jpg" alt="Sprchy a toalety studia"></div>
+      <div class="gallery-item"><img src="images/galerie-3.jpg" alt="Vstupní schodiště s podsvícením"></div>
+      <div class="gallery-item"><img src="images/galerie-4.jpg" alt="Sál na spinning"></div>
+      <div class="gallery-item"><img src="images/galerie-5.jpg" alt="Stojan s činkami v posilovně"></div>
+      <div class="gallery-item"><img src="images/galerie-6.jpg" alt="Šatny s uzamykatelnými skříňkami"></div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt" id="recenze">
+  <div class="wrap">
+    <p class="eyebrow-line">Recenze</p>
+    <h2 class="section-title">Co říkají klienti</h2>
+
+    <div class="reviews-grid">
+      <blockquote class="review-card">
+        <p>„Za tři měsíce s Kristinou jsem zvládla víc, než za dva roky sama v posilovně. Konečně vím, proč cvičím to, co cvičím.“</p>
+        — Petra, členka 8 měsíců
+      </blockquote>
+      <blockquote class="review-card">
+        <p>„Skupinové lekce mě baví natolik, že se na ně těším i po náročném dni. Trenéři hlídají techniku každého v místnosti.“</p>
+        — Martin, člen 1 rok
+      </blockquote>
+      <blockquote class="review-card">
+        <p>„Výživové poradenství mi konečně dalo jídelníček, který dodržím i v pracovním vytížení. Žádné extrémy, jen funguje.“</p>
+        — Lucie, členka 5 měsíců
+      </blockquote>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="kontakt">
+  <div class="wrap contact-grid">
+    <div class="contact-info">
+      <p class="eyebrow-line">Kontakt</p>
+      <h2 class="section-title">Domluvme první trénink</h2>
+      <p class="contact-lead">Napiš nám nebo zavolej — ozveme se do jednoho pracovního dne a domluvíme vstupní konzultaci zdarma.</p>
+
+      <ul class="contact-list">
+        <li><strong>Adresa:</strong> Ulice 123, 110 00 Praha 1</li>
+        <li><strong>Telefon:</strong> <a href="tel:+420123456789">+420 123 456 789</a></li>
+        <li><strong>E-mail:</strong> <a href="mailto:info@pulzfitness.cz">info@pulzfitness.cz</a></li>
+        <li><strong>Otevírací doba:</strong> Po–Pá 6:00–22:00, So–Ne 8:00–20:00</li>
+      </ul>
+
+      <div class="social-links">
+        <a href="#" aria-label="Instagram">Instagram</a>
+        <a href="#" aria-label="Facebook">Facebook</a>
+      </div>
+    </div>
+
+    <form class="contact-form" id="contactForm">
+      <label for="name">Jméno</label>
+      <input type="text" id="name" name="name" placeholder="Jak se jmenuješ?" required>
+
+      <label for="email">E-mail</label>
+      <input type="email" id="email" name="email" placeholder="tvuj@email.cz" required>
+
+      <label for="message">Zpráva</label>
+      <textarea id="message" name="message" rows="4" placeholder="Napiš nám, co tě zajímá..." required></textarea>
+
+      <button type="submit" class="btn btn-primary form-submit">Odeslat zprávu</button>
+      <p class="form-note" id="formNote"></p>
+    </form>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="wrap footer-inner">
+    <a href="#uvod" class="logo logo-footer">PULZ<span class="logo-dot">.</span></a>
+    <p>&copy; <span id="year"></span> PULZ Fitness. Všechna práva vyhrazena.</p>
+    <div class="footer-links">
+      <a href="#o-nas">O nás</a>
+      <a href="#sluzby">Služby</a>
+      <a href="#kontakt">Kontakt</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+
+  var header = document.getElementById('header');
+  var navToggle = document.getElementById('navToggle');
+
+  if (navToggle && header) {
+    navToggle.addEventListener('click', function () {
+      var isOpen = header.classList.toggle('is-open');
+      navToggle.classList.toggle('is-open', isOpen);
+      navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    });
+
+    document.querySelectorAll('.nav a').forEach(function (link) {
+      link.addEventListener('click', function () {
+        header.classList.remove('is-open');
+        navToggle.classList.remove('is-open');
+        navToggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+  }
+
+  var yearEl = document.getElementById('year');
+  if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+  var statNums = document.querySelectorAll('.stat-num');
+
+  function animateNumber(el) {
+    var target = parseInt(el.getAttribute('data-count'), 10) || 0;
+    var duration = 1100;
+    var startTime = null;
+
+    function step(timestamp) {
+      if (!startTime) startTime = timestamp;
+      var progress = Math.min((timestamp - startTime) / duration, 1);
+      var eased = 1 - Math.pow(1 - progress, 3);
+      el.textContent = Math.floor(eased * target);
+      if (progress < 1) {
+        requestAnimationFrame(step);
+      } else {
+        el.textContent = target;
+      }
+    }
+    requestAnimationFrame(step);
+  }
+
+  if ('IntersectionObserver' in window && statNums.length) {
+    var observer = new IntersectionObserver(function (entries, obs) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          animateNumber(entry.target);
+          obs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.6 });
+
+    statNums.forEach(function (el) { observer.observe(el); });
+  } else {
+    statNums.forEach(function (el) { animateNumber(el); });
+  }
+
+  var form = document.getElementById('contactForm');
+  var formNote = document.getElementById('formNote');
+
+  if (form && formNote) {
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      formNote.textContent = 'Díky! Zpráva je připravená k odeslání — napoj formulář na svůj e-mail nebo službu (např. Formspree), aby se opravdu odeslala.';
+      form.reset();
+    });
+  }
+
+});
+</script>
+</body>
+</html>
